@@ -12,4 +12,3 @@ class Item(Base):
     name = Column(String, nullable=False)
     price = Column(Float, nullable=False)
     brand = Column(String)
-    description = Column(String)
