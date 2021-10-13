@@ -5,4 +5,10 @@ update-db:
 	alembic upgrade head
 
 serve:
-	uvicorn main:app --reload
+	uvicorn src.main:app --reload
+
+add-revision:
+	alembic revision --autogenerate -m $(message)
+
+downgrade-db:
+	alembic downgrade ${rev_count}

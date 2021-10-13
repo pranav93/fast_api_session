@@ -1,6 +1,6 @@
 from sqlalchemy import Integer, String, Float
-from sqlalchemy.sql.schema import Column
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.sql.schema import Column
 
 Base = declarative_base()
 
@@ -12,3 +12,4 @@ class Item(Base):
     name = Column(String, nullable=False)
     price = Column(Float, nullable=False)
     brand = Column(String)
+    description = Column(String)

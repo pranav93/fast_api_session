@@ -1,16 +1,11 @@
 from fastapi import FastAPI, Path, Query, HTTPException, status, Depends
-from typing import Optional
-from pydantic import BaseModel
-from schemas import CreateItemRequest, UpdateItemRequest, ItemResponse
 from sqlalchemy.orm import Session
-from database import get_db
-from model import Item as DBItem
 
+from src.database import get_db
+from src.model import Item as DBItem
+from src.schemas import CreateItemRequest, UpdateItemRequest, ItemResponse
 
 app = FastAPI()
-
-
-inventory = {}
 
 
 @app.post("/create-item/")
@@ -90,3 +85,8 @@ def update_item(item: UpdateItemRequest, item_id: int = Path(None, title="Item I
         price=to_update.price,
         brand=to_update.brand,
     )
+
+
+@app.get("/")
+def hello():
+    return {"msg": "Hello World"}
